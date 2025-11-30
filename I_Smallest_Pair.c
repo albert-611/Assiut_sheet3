@@ -1,43 +1,29 @@
-#include<stdio.h>
+#include <stdio.h>
 
-int main(){
+int main() {
+    int t;
+    scanf("%d", &t);
 
-    int n, num;
-    scanf("%d", &n);
-    
+    for (int k = 0; k < t; k++) {
+        int n;
+        scanf("%d", &n);
 
-    for (int i = 1; i <= n; i++)
-    {
-        
-        scanf("%d", &num);
-
-    }
-
-    int a[num];
-        
-        for (int j = 1; j <= num; j++)
-        {
-            scanf("%d", &a[num]);
+        int a[n];
+        for (int i = 0; i < n; i++) {
+            scanf("%d", &a[i]);
         }
-        
-    
 
-    int min = 1e5 + 3;
-    int val = 0;
-    for (int i = 1; i <= num; i++)
-    {
-        for (int j = 2; j <= num; j++)
-        {
-            val = (a[i] - i) + (a[j] + j);
+        int min = 1000000000;
 
-            if (min > val)
-            {
-                min = val;
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                int val = a[i] + a[j] + (j - i);
+                if (val < min) min = val;
             }
-            
         }
-        
+
+        printf("%d\n", min);
     }
 
-    printf("%d", min);
+    return 0;
 }
